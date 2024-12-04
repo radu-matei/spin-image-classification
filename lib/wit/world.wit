@@ -1,0 +1,28 @@
+package component:image-classification-lib;
+
+/// A simple Wasm world for image classification.
+world classification {
+    export image-classification;
+}
+
+/// Image classification interface.
+interface image-classification {
+    /// Error returned by image classification components.
+    variant classification-error {
+        model-error(string),
+        image-error(string),
+        io-error(string),
+        unknown(string),
+        unclassified,
+    }
+    /// Type representing an image.
+    type image = list<u8>;
+
+    /// Result of an image classification operation representing the
+    /// image class and computed probability.
+    type classification-result = tuple<string, f32>;
+    
+    /// Default image classification function.
+    classify: func(img: image) -> result<classification-result, classification-error>; 
+}
+
