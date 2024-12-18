@@ -1,7 +1,7 @@
 target/
 *.wasm/
 .spin/
-.wit/
+# .wit/
 node_modules/
 dist.js
 combined-wit/
